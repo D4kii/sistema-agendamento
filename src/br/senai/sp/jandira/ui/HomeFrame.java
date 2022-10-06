@@ -4,6 +4,10 @@
  */
 package br.senai.sp.jandira.ui;
 
+import java.awt.Toolkit;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author 22282213
@@ -15,6 +19,8 @@ public class HomeFrame extends javax.swing.JFrame {
      */
     public HomeFrame() {
         initComponents();
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/senai/sp/jandira/imagens/relatorio.png")));
+        preencherTabela();
     }
 
     /**
@@ -26,161 +32,260 @@ public class HomeFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        sairButton = new javax.swing.JButton();
+        agendaButton = new javax.swing.JButton();
+        pacienteButton = new javax.swing.JButton();
+        medicosButton = new javax.swing.JButton();
+        planosButton = new javax.swing.JButton();
+        especialidadesButton = new javax.swing.JButton();
+        fundoPanel = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tabela = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        editarButton = new javax.swing.JButton();
+
+        jScrollPane1.setViewportView(jTextPane1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sistema de Agendamento");
+        setBackground(new java.awt.Color(255, 204, 102));
+        setResizable(false);
         getContentPane().setLayout(null);
 
-        jPanel1.setBackground(new java.awt.Color(51, 102, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(null);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/cronograma.png"))); // NOI18N
-        jLabel2.setText("jLabel2");
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/calendario.png"))); // NOI18N
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(20, 10, 70, 70);
+        jLabel2.setBounds(20, 0, 70, 80);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel1.setForeground(new java.awt.Color(102, 102, 102));
         jLabel1.setText("Sistema para Agendamento de Consultas");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(100, 30, 480, 32);
+        jLabel1.setBounds(100, 20, 480, 32);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 800, 90);
+        jPanel1.setBounds(0, 0, 800, 80);
 
-        jButton1.setBackground(new java.awt.Color(255, 0, 0));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Sair");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(690, 110, 90, 50);
-
-        jButton2.setBackground(new java.awt.Color(153, 153, 153));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Agenda");
-        getContentPane().add(jButton2);
-        jButton2.setBounds(10, 110, 100, 50);
-
-        jButton3.setBackground(new java.awt.Color(153, 153, 153));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Paciente");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        sairButton.setBackground(new java.awt.Color(255, 0, 0));
+        sairButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        sairButton.setForeground(new java.awt.Color(255, 255, 255));
+        sairButton.setText("Sair");
+        sairButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        sairButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                sairButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3);
-        jButton3.setBounds(120, 110, 87, 50);
+        getContentPane().add(sairButton);
+        sairButton.setBounds(690, 90, 90, 50);
 
-        jButton4.setBackground(new java.awt.Color(153, 153, 153));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Médicos");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        agendaButton.setBackground(new java.awt.Color(255, 204, 51));
+        agendaButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        agendaButton.setForeground(new java.awt.Color(51, 51, 51));
+        agendaButton.setText("Agenda");
+        agendaButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        agendaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                agendaButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4);
-        jButton4.setBounds(230, 110, 110, 50);
+        getContentPane().add(agendaButton);
+        agendaButton.setBounds(10, 90, 100, 50);
 
-        jButton5.setBackground(new java.awt.Color(153, 153, 153));
-        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Plano de Saúde");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        pacienteButton.setBackground(new java.awt.Color(255, 204, 51));
+        pacienteButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        pacienteButton.setForeground(new java.awt.Color(51, 51, 51));
+        pacienteButton.setText("Pacientes");
+        pacienteButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pacienteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                pacienteButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5);
-        jButton5.setBounds(510, 110, 140, 50);
+        getContentPane().add(pacienteButton);
+        pacienteButton.setBounds(120, 90, 100, 50);
 
-        jButton6.setBackground(new java.awt.Color(153, 153, 153));
-        jButton6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("Especialidades");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        medicosButton.setBackground(new java.awt.Color(255, 204, 51));
+        medicosButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        medicosButton.setForeground(new java.awt.Color(51, 51, 51));
+        medicosButton.setText("Médicos");
+        medicosButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        medicosButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                medicosButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6);
-        jButton6.setBounds(350, 110, 127, 50);
+        getContentPane().add(medicosButton);
+        medicosButton.setBounds(230, 90, 100, 50);
 
-        setBounds(0, 0, 816, 468);
+        planosButton.setBackground(new java.awt.Color(255, 204, 51));
+        planosButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        planosButton.setForeground(new java.awt.Color(51, 51, 51));
+        planosButton.setText("Plano de Saúde");
+        planosButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        planosButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                planosButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(planosButton);
+        planosButton.setBounds(490, 90, 140, 50);
+
+        especialidadesButton.setBackground(new java.awt.Color(255, 204, 51));
+        especialidadesButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        especialidadesButton.setForeground(new java.awt.Color(51, 51, 51));
+        especialidadesButton.setText("Especialidades");
+        especialidadesButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        especialidadesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                especialidadesButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(especialidadesButton);
+        especialidadesButton.setBounds(340, 90, 140, 50);
+
+        fundoPanel.setBackground(new java.awt.Color(255, 204, 204));
+        fundoPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        fundoPanel.setLayout(null);
+
+        tabela.setBackground(new java.awt.Color(228, 53, 88));
+        tabela.setForeground(new java.awt.Color(255, 204, 204));
+        tabela.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tabela.setSelectionBackground(new java.awt.Color(228, 53, 88));
+        jScrollPane2.setViewportView(tabela);
+
+        fundoPanel.add(jScrollPane2);
+        jScrollPane2.setBounds(10, 10, 730, 110);
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/excluir (1).png"))); // NOI18N
+        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        fundoPanel.add(jButton1);
+        jButton1.setBounds(10, 310, 60, 60);
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/atualizar.png"))); // NOI18N
+        jButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        fundoPanel.add(jButton2);
+        jButton2.setBounds(590, 320, 70, 50);
+
+        editarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/lapis (3).png"))); // NOI18N
+        editarButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        editarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarButtonActionPerformed(evt);
+            }
+        });
+        fundoPanel.add(editarButton);
+        editarButton.setBounds(670, 320, 70, 50);
+
+        getContentPane().add(fundoPanel);
+        fundoPanel.setBounds(20, 150, 750, 380);
+
+        setBounds(0, 0, 816, 592);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void medicosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medicosButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_medicosButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void pacienteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pacienteButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_pacienteButtonActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void especialidadesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_especialidadesButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_especialidadesButtonActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void planosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_planosButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_planosButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HomeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HomeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HomeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HomeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void agendaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendaButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_agendaButtonActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new HomeFrame().setVisible(true);
-            }
-        });
-    }
+    private void sairButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sairButtonActionPerformed
+
+    private void editarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editarButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton agendaButton;
+    private javax.swing.JButton editarButton;
+    private javax.swing.JButton especialidadesButton;
+    private javax.swing.JPanel fundoPanel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JButton medicosButton;
+    private javax.swing.JButton pacienteButton;
+    private javax.swing.JButton planosButton;
+    private javax.swing.JButton sairButton;
+    private javax.swing.JTable tabela;
     // End of variables declaration//GEN-END:variables
+
+
+    private void preencherTabela (){
+        
+        String[][] dados = {
+            {"111","abc","sp"},
+            {"222","def","sp"},
+            {"333","ghi","sp"},
+            {"444","jkl","sp"},
+            {"555","mno","sp"}
+        };
+        
+        String[] titulos = {"CÓDIGO","Nome da Cidade","Estado"};
+        DefaultTableModel modelo = new DefaultTableModel(dados, titulos);
+        
+        tabela.setModel(modelo);
+    }
+
 }
+
+

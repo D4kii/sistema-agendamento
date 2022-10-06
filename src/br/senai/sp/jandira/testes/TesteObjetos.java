@@ -2,7 +2,7 @@ package br.senai.sp.jandira.testes;
 
 import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
+//import javax.swing.JOptionPane;
 
 import br.senai.sp.jandira.AgendaApp;
 import br.senai.sp.jandira.dao.EspecialidadeDao;
@@ -12,6 +12,31 @@ import br.senai.sp.jandira.model.PlanoDeSaude;
 public class TesteObjetos {
 
     public static void main(String[] args) {
+        
+        int[] a = {6, 9, 87, 35, 96};
+        int[] b = new int[4];
+        b[0] = 55;
+        b[1] = 55;
+        b[2] = 11;
+        b[3] = 99;
+        
+        int[][] c = {
+            {4, 6, 5},
+            {5, 9, 7},
+            {1, 13, 3},
+            {5, 5, 8}
+        };
+        
+        String[][] quitanda = {
+            {"banana","Maçã", "Uva", "Morango"},
+            {"Alface", "Couve", "Pepino", "Salsinha", "Pimentão", "Brócolis"},
+            {"Abacate", "Tomate", "Jiló", "Abóbora"}
+        };
+        
+        System.out.println(quitanda[1][4]);
+        System.out.println(c[2][1]);
+        
+        System.out.println("*******************************************************");
 
         Especialidade e1 = new Especialidade("Cardiologia");
         //e1.setNome("Cardiologia");
