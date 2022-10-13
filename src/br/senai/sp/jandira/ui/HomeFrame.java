@@ -54,15 +54,14 @@ public class HomeFrame extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(null);
 
-        tituloLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        tituloLabel.setForeground(new java.awt.Color(102, 102, 102));
+        tituloLabel.setFont(new java.awt.Font("Arial", 3, 33)); // NOI18N
         tituloLabel.setText("Sistema para Agendamento de Consultas");
         jPanel1.add(tituloLabel);
-        tituloLabel.setBounds(100, 20, 480, 32);
+        tituloLabel.setBounds(80, 20, 720, 42);
 
         iconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/calendario.png"))); // NOI18N
         jPanel1.add(iconLabel);
-        iconLabel.setBounds(10, 0, 70, 80);
+        iconLabel.setBounds(0, 0, 70, 80);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 800, 80);
@@ -125,7 +124,7 @@ public class HomeFrame extends javax.swing.JFrame {
         planosButton.setBounds(490, 100, 70, 60);
 
         homePanel.setBackground(new java.awt.Color(255, 255, 255));
-        homePanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        homePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         homePanel.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Swis721 BlkCn BT", 0, 48)); // NOI18N
@@ -233,6 +232,7 @@ public class HomeFrame extends javax.swing.JFrame {
         homeButton.setBackground(new java.awt.Color(255,204,51));
         homePanel.setVisible(true);
         especialidadesPanel.setVisible(false);
+        
     }//GEN-LAST:event_homeButtonActionPerformed
 
 

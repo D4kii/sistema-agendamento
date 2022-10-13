@@ -5,6 +5,8 @@
 package br.senai.sp.jandira.ui;
 
 import br.senai.sp.jandira.dao.EspecialidadeDao;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 //import javax.swing.table.DefaultTableModel;
 
 /**
@@ -34,27 +36,28 @@ public class EspecialidadesPanel extends javax.swing.JPanel {
         updateButton = new javax.swing.JButton();
         editarButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tabela = new javax.swing.JTable();
-        trashButton = new javax.swing.JButton();
+        tabelaEspecialidadesJTablel = new javax.swing.JTable();
+        excluirEspecialidadeButton = new javax.swing.JButton();
+        editarEspecialidadeJButton1 = new javax.swing.JButton();
 
-        setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lista de Especialidades", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Lista de Especialidades", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
         setPreferredSize(new java.awt.Dimension(750, 380));
         setLayout(null);
 
         updateButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/atualizar.png"))); // NOI18N
-        updateButton.setToolTipText("Atualizar");
-        updateButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        updateButton.setToolTipText("carregar");
+        updateButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         updateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateButtonActionPerformed(evt);
             }
         });
         add(updateButton);
-        updateButton.setBounds(590, 280, 70, 50);
+        updateButton.setBounds(510, 280, 70, 50);
 
-        editarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/lapis (3).png"))); // NOI18N
-        editarButton.setToolTipText("editar ou adicionar");
-        editarButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        editarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/mais.png"))); // NOI18N
+        editarButton.setToolTipText("Adicionar");
+        editarButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         editarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editarButtonActionPerformed(evt);
@@ -63,9 +66,11 @@ public class EspecialidadesPanel extends javax.swing.JPanel {
         add(editarButton);
         editarButton.setBounds(670, 280, 70, 50);
 
-        tabela.setBackground(new java.awt.Color(228, 53, 88));
-        tabela.setForeground(new java.awt.Color(255, 204, 204));
-        tabela.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaEspecialidadesJTablel.setAutoCreateRowSorter(true);
+        tabelaEspecialidadesJTablel.setBackground(new java.awt.Color(255, 204, 51));
+        tabelaEspecialidadesJTablel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        tabelaEspecialidadesJTablel.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        tabelaEspecialidadesJTablel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -76,22 +81,33 @@ public class EspecialidadesPanel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tabela.setSelectionBackground(new java.awt.Color(228, 53, 88));
-        jScrollPane2.setViewportView(tabela);
+        tabelaEspecialidadesJTablel.setSelectionBackground(new java.awt.Color(228, 53, 88));
+        jScrollPane2.setViewportView(tabelaEspecialidadesJTablel);
 
         add(jScrollPane2);
         jScrollPane2.setBounds(10, 20, 730, 250);
 
-        trashButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/excluir (1).png"))); // NOI18N
-        trashButton.setToolTipText("excluir");
-        trashButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        trashButton.addActionListener(new java.awt.event.ActionListener() {
+        excluirEspecialidadeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/excluir (1).png"))); // NOI18N
+        excluirEspecialidadeButton.setToolTipText("excluir");
+        excluirEspecialidadeButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        excluirEspecialidadeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                trashButtonActionPerformed(evt);
+                excluirEspecialidadeButtonActionPerformed(evt);
             }
         });
-        add(trashButton);
-        trashButton.setBounds(10, 280, 60, 60);
+        add(excluirEspecialidadeButton);
+        excluirEspecialidadeButton.setBounds(10, 280, 60, 60);
+
+        editarEspecialidadeJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/lapis (3).png"))); // NOI18N
+        editarEspecialidadeJButton1.setToolTipText("editar");
+        editarEspecialidadeJButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        editarEspecialidadeJButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarEspecialidadeJButton1ActionPerformed(evt);
+            }
+        });
+        add(editarEspecialidadeJButton1);
+        editarEspecialidadeJButton1.setBounds(590, 280, 70, 50);
     }// </editor-fold>//GEN-END:initComponents
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
@@ -99,24 +115,69 @@ public class EspecialidadesPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_updateButtonActionPerformed
 
     private void editarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarButtonActionPerformed
-        // TODO add your handling code here:
+    
+    EspecialidadeDialog especialidadeDialog = new EspecialidadeDialog(null, true);
+    especialidadeDialog.setVisible(true);
+    preencherTabela();
+    
     }//GEN-LAST:event_editarButtonActionPerformed
-
-    private void trashButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trashButtonActionPerformed
+                                                          
+    
+    private void excluirEspecialidadeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirEspecialidadeButtonActionPerformed
+       
+        int linha = tabelaEspecialidadesJTablel.getSelectedRow();
+        
+        if (linha != -1) {
+        excluirEspecialidade(linha);
+        }
+        
+        
+       
+    }//GEN-LAST:event_excluirEspecialidadeButtonActionPerformed
+    
+     private void excluirEspecialidade(int linha) {
+        String codigoStr = tabelaEspecialidadesJTablel.getValueAt(linha, 0).toString();
+        Integer codigo = Integer.valueOf(codigoStr); 
+        
+        EspecialidadeDao.excluir(codigo);
+        
+        preencherTabela();
+        }
+    
+    private void editarEspecialidadeJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarEspecialidadeJButton1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_trashButtonActionPerformed
+    }//GEN-LAST:event_editarEspecialidadeJButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton editarButton;
+    private javax.swing.JButton editarEspecialidadeJButton1;
+    private javax.swing.JButton excluirEspecialidadeButton;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tabela;
-    private javax.swing.JButton trashButton;
+    private javax.swing.JTable tabelaEspecialidadesJTablel;
     private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
     
     private void preencherTabela (){
         
-        tabela.setModel(EspecialidadeDao.getEspecialidadesModel());
+        tabelaEspecialidadesJTablel.setModel(EspecialidadeDao.getEspecialidadesModel());
+        
+        
+        ajustarTabela();
+    }
+    
+    private void ajustarTabela(){
+        //impedir que o usuário movimente as colunas
+        tabelaEspecialidadesJTablel.getTableHeader().setReorderingAllowed(true);
+        
+        //Bloquear a edição das células da tabela
+        tabelaEspecialidadesJTablel.setDefaultEditor(Object.class, null);
+        
+        //
+        tabelaEspecialidadesJTablel.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        tabelaEspecialidadesJTablel.getColumnModel().getColumn(0).setPreferredWidth(100);
+        tabelaEspecialidadesJTablel.getColumnModel().getColumn(1).setPreferredWidth(200);
+        tabelaEspecialidadesJTablel.getColumnModel().getColumn(2).setPreferredWidth(400);
+        
     }
 }

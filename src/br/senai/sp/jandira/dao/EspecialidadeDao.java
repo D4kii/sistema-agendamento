@@ -74,13 +74,15 @@ public class EspecialidadeDao {
         String[] titulos = {"CÓDIGO", "NOME DA ESPECIALIDADE", "DESCRIÇÃO"};
         
         String[][] dados = new String[especialidades.size()][3];
+        //o int tem que ser fora do for
+        
+        int i = 0; 
         
         for (Especialidade e : especialidades){
-        int i = 0;
-        dados[i][0] = e.getCodigo().toString();
-        dados[i][1] = e.getNome();
-        dados[i][2] = e.getDescricao();
-        i++;
+            dados[i][0] = e.getCodigo().toString();
+            dados[i][1] = e.getNome();
+            dados[i][2] = e.getDescricao();
+            i++;
         }
         DefaultTableModel model = new DefaultTableModel(dados, titulos);
         
