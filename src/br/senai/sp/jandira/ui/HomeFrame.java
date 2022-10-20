@@ -224,7 +224,7 @@ public class HomeFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_agendaButtonActionPerformed
 
     private void sairButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairButtonActionPerformed
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_sairButtonActionPerformed
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed

@@ -4,19 +4,20 @@ import java.time.LocalDate;
 
 public class PlanoDeSaude {
 	
+        
 	private String operadora;
 	private String categoria;
 	private String numero;
 	private LocalDate validade;
-	private static int quantidade;
+	private static Integer codigo;
 	
 	public PlanoDeSaude(String operadora) {
 		this.operadora = operadora;
-		this.quantidade++;
+		this.codigo++;
 	}
 	
 	public PlanoDeSaude() {
-		this.quantidade++;
+		this.codigo++;
 	}
 	
 	public void setOperadora(String operadora) {
@@ -52,8 +53,8 @@ public class PlanoDeSaude {
 		
 	}
 	
-	public static int getQuantidade() {
-		return quantidade;
+	public static int getCodigo() {
+		return codigo;
 	}
 
 }

@@ -142,18 +142,18 @@ public class TesteObjetos {
         System.out.println("-------------- OPERADORA --------------");
         for (PlanoDeSaude o : planos) {
             System.out.println(o.getOperadora());
-            System.out.println(o.getQuantidade());
+            System.out.println(o.getCodigo());
         }
 
         PlanoDeSaude xpto1 = new PlanoDeSaude();
         PlanoDeSaude xpto2 = new PlanoDeSaude();
         PlanoDeSaude xpto3 = new PlanoDeSaude();
 
-        System.out.println("-------- " + PlanoDeSaude.getQuantidade());
+        System.out.println("-------- " + PlanoDeSaude.getCodigo());
 
         AgendaApp.main(args);
 
-        System.out.println("-------- " + PlanoDeSaude.getQuantidade());
+        System.out.println("-------- " + PlanoDeSaude.getCodigo());
 
     }
 
