@@ -4,7 +4,8 @@ package br.senai.sp.jandira.ui;
 import java.awt.Toolkit;
 
 public class HomeFrame extends javax.swing.JFrame {
-
+    
+    private PlanoDeSaudePanel planoDeSaudePanel;
     private EspecialidadesPanel especialidadesPanel;
     
     private final int POS_X = 30;
@@ -209,6 +210,7 @@ public class HomeFrame extends javax.swing.JFrame {
 
     private void especialidadesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_especialidadesButtonActionPerformed
         especialidadesButton.setBackground(new java.awt.Color(255,204,51));
+        planosButton.setBackground(new java.awt.Color(255,204,51));
         homeButton.setBackground(new java.awt.Color(255,204,51));
         homePanel.setVisible(false);
         especialidadesPanel.setVisible(true);
@@ -216,7 +218,13 @@ public class HomeFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_especialidadesButtonActionPerformed
 
     private void planosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_planosButtonActionPerformed
-        // TODO add your handling code here:
+        especialidadesButton.setBackground(new java.awt.Color(255,204,51));
+        planosButton.setBackground(new java.awt.Color(255,204,51));
+        homeButton.setBackground(new java.awt.Color(255,204,51));
+        homePanel.setVisible(false);
+        planoDeSaudePanel.setVisible(true);
+        especialidadesPanel.setVisible(false);
+        
     }//GEN-LAST:event_planosButtonActionPerformed
 
     private void agendaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendaButtonActionPerformed
@@ -229,9 +237,11 @@ public class HomeFrame extends javax.swing.JFrame {
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         especialidadesButton.setBackground(new java.awt.Color(255,204,51));
+        planosButton.setBackground(new java.awt.Color(255,204,51));
         homeButton.setBackground(new java.awt.Color(255,204,51));
         homePanel.setVisible(true);
         especialidadesPanel.setVisible(false);
+        planoDeSaudePanel.setVisible(false);
         
     }//GEN-LAST:event_homeButtonActionPerformed
 
@@ -263,6 +273,11 @@ public class HomeFrame extends javax.swing.JFrame {
         especialidadesPanel.setBounds(POS_X, POS_Y, LARGURA, ALTURA);
         getContentPane().add(especialidadesPanel);
         especialidadesPanel.setVisible(false);
+        
+//        planoDeSaudePanel = new PlanoDeSaudePanel();
+//        planoDeSaudePanel.setBounds(POS_X, POS_Y, WIDTH, HEIGHT);
+//        getContentPane().add(planoDeSaudePanel);
+//        planoDeSaudePanel.setVisible(false);
         
     }
 

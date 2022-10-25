@@ -192,7 +192,7 @@ public class EspecialidadesPanel extends javax.swing.JPanel {
         ajustarTabela();
     }
     
-    private void ajustarTabela(){
+  private void ajustarTabela(){
         //impedir que o usuário movimente as colunas
         tabelaEspecialidadesJTablel.getTableHeader().setReorderingAllowed(true);
         

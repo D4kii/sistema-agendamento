@@ -57,7 +57,7 @@ public class EspecialidadeDao {
     
     // Criar uma lista inicial de especialidades
     public static void criarListaEspecialidades() {
-        Especialidade e1 = new Especialidade("Cardiologia", "Parte da medicina que cuida do coração");
+        Especialidade e1 = new Especialidade("Cardiologia",  "Parte da medicina que cuida do coração");
         Especialidade e2 = new Especialidade("Nefrologia", "Parte da medicina que estuda doenças relacionadas ao rim");
         Especialidade e3 = new Especialidade("Otorrinolaringologia", "Parte da medicina que cuida das vias nasais");
         Especialidade e4 = new Especialidade("Fisioterapia", "Parte da medicina que cuida dos musculos e da coluna");

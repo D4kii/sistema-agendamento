@@ -130,30 +130,30 @@ public class TesteObjetos {
         // Criar 3 planos de saúde, armazenar em um arraylist
         // e exibir o nome da operadora de cada um deles
         // usando for each.
-        PlanoDeSaude p1 = new PlanoDeSaude("Amil");
-        PlanoDeSaude p2 = new PlanoDeSaude("Bradesco");
-        PlanoDeSaude p3 = new PlanoDeSaude("Notredame");
-
-        ArrayList<PlanoDeSaude> planos = new ArrayList<>();
-        planos.add(p1);
-        planos.add(p2);
-        planos.add(p3);
-
-        System.out.println("-------------- OPERADORA --------------");
-        for (PlanoDeSaude o : planos) {
-            System.out.println(o.getOperadora());
-            System.out.println(o.getCodigo());
-        }
-
-        PlanoDeSaude xpto1 = new PlanoDeSaude();
-        PlanoDeSaude xpto2 = new PlanoDeSaude();
-        PlanoDeSaude xpto3 = new PlanoDeSaude();
-
-        System.out.println("-------- " + PlanoDeSaude.getCodigo());
-
-        AgendaApp.main(args);
-
-        System.out.println("-------- " + PlanoDeSaude.getCodigo());
+//        PlanoDeSaude p1 = new PlanoDeSaude("Amil");
+//        PlanoDeSaude p2 = new PlanoDeSaude("Bradesco");
+//        PlanoDeSaude p3 = new PlanoDeSaude("Notredame");
+//
+//        ArrayList<PlanoDeSaude> planos = new ArrayList<>();
+//        planos.add(p1);
+//        planos.add(p2);
+//        planos.add(p3);
+//
+//        System.out.println("-------------- OPERADORA --------------");
+//        for (PlanoDeSaude o : planos) {
+//            System.out.println(o.getOperadora());
+//            System.out.println(o.getCodigo());
+//        }
+//
+//        PlanoDeSaude xpto1 = new PlanoDeSaude();
+//        PlanoDeSaude xpto2 = new PlanoDeSaude();
+//        PlanoDeSaude xpto3 = new PlanoDeSaude();
+//
+//        System.out.println("-------- " + PlanoDeSaude.getCodigo());
+//
+//        AgendaApp.main(args);
+//
+//        System.out.println("-------- " + PlanoDeSaude.getCodigo());
 
     }
 

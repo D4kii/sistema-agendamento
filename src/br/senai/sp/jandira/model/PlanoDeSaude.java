@@ -11,7 +11,7 @@ public class PlanoDeSaude {
 	private LocalDate validade;
 	private static Integer codigo;
 	
-	public PlanoDeSaude(String operadora) {
+	public PlanoDeSaude(String operadora, String categoria, String numero, String validade) {
 		this.operadora = operadora;
 		this.codigo++;
 	}
@@ -53,7 +53,7 @@ public class PlanoDeSaude {
 		
 	}
 	
-	public static int getCodigo() {
+	public Integer getCodigo() {
 		return codigo;
 	}
 
