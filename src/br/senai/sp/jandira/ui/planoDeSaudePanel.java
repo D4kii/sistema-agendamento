@@ -24,10 +24,6 @@ public class PlanoDeSaudePanel extends javax.swing.JPanel {
         linha = tabelaPlanosDeSaudeJTablel.getSelectedRow();
         return linha;
     }
-
-    public void setLinha(int linha) {
-        linha = tabelaPlanosDeSaudeJTablel.getSelectedRow();
-    }
     
     
     
@@ -123,7 +119,7 @@ public class PlanoDeSaudePanel extends javax.swing.JPanel {
     private void editarPlano(){
         PlanoDeSaude planoDeSaude = new PlanoDeSaudeDao().getPlanoDeSaude(getCodigo());
         
-        PlanosDialog planosDialog = new PlanosDialog(null, true, planoDeSaude, OperacaoEnum.EDITAR);
+        PlanosDialog planosDialog = new PlanosDialog(null, true,planoDeSaude, OperacaoEnum.EDITAR);
         planosDialog.setVisible(true);
        
        preencherTabela();
@@ -131,14 +127,17 @@ public class PlanoDeSaudePanel extends javax.swing.JPanel {
     
     private void excluirPlanoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirPlanoButtonActionPerformed
         
+        
         if (getLinha() != -1) {
-        excluirPlano(linha);
+            excluirPlano(linha);
         } else {
         JOptionPane.showMessageDialog(
                 this,
                 "Por favor, selecione o Plano de Saúde que deseja excluir",
                 "Atenção",
                 JOptionPane.OK_OPTION);
+        
+        
         }
       
 
@@ -195,14 +194,16 @@ public class PlanoDeSaudePanel extends javax.swing.JPanel {
     }
 
     private void ajustarTabela() {
-        tabelaPlanosDeSaudeJTablel.getTableHeader().setReorderingAllowed(true);
+        tabelaPlanosDeSaudeJTablel.getTableHeader().setReorderingAllowed(false);
         
         tabelaPlanosDeSaudeJTablel.setDefaultEditor(Object.class, null);
         
         tabelaPlanosDeSaudeJTablel.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        tabelaPlanosDeSaudeJTablel.getColumnModel().getColumn(0).setPreferredWidth(100);
+        tabelaPlanosDeSaudeJTablel.getColumnModel().getColumn(0).setPreferredWidth(50);
         tabelaPlanosDeSaudeJTablel.getColumnModel().getColumn(1).setPreferredWidth(200);
-        tabelaPlanosDeSaudeJTablel.getColumnModel().getColumn(2).setPreferredWidth(400);
+        tabelaPlanosDeSaudeJTablel.getColumnModel().getColumn(2).setPreferredWidth(200);
+        tabelaPlanosDeSaudeJTablel.getColumnModel().getColumn(3).setPreferredWidth(200);
+        tabelaPlanosDeSaudeJTablel.getColumnModel().getColumn(4).setPreferredWidth(100);
         
     }
 

@@ -2,6 +2,7 @@
 package br.senai.sp.jandira.dao;
 
 import br.senai.sp.jandira.model.PlanoDeSaude;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -9,8 +10,8 @@ import javax.swing.table.DefaultTableModel;
 public class PlanoDeSaudeDao {
     private static ArrayList<PlanoDeSaude> planoDeSaude = new ArrayList<>();
     
-    public static void gravar(PlanoDeSaude plano) { //CREATE
-        planoDeSaude.add(plano);
+    public static void gravar(PlanoDeSaude e) { //CREATE
+        planoDeSaude.add(e);
     }
     
     public static ArrayList<PlanoDeSaude> getPlanoDeSaudes(){ //READ
@@ -50,10 +51,10 @@ public class PlanoDeSaudeDao {
     }
     
     public static void criarListaPlanos(){
-        PlanoDeSaude plano1 = new PlanoDeSaude("Amil", "One 5000 Black", "067296783", "31/12/2026");
-        PlanoDeSaude plano2 = new PlanoDeSaude("Bradesco", "Nacional Flex", "343 920 297885 007", "31/12/2024");
-        PlanoDeSaude plano3 = new PlanoDeSaude("Unimed", "Master", "2 077 573690267849 2", "31/12/2026");
-        PlanoDeSaude plano4 = new PlanoDeSaude("Notre Dame", "Advance", "4534 3456 3456 2222 989 0004", "31/12/2027");
+        PlanoDeSaude plano1 = new PlanoDeSaude("Amil", "One 5000 Black", "067296783", LocalDate.of(2024, 12, 30));
+        PlanoDeSaude plano2 = new PlanoDeSaude("Bradesco", "Nacional Flex", "343 920 297885 007", LocalDate.of(2025, 12, 30));
+        PlanoDeSaude plano3 = new PlanoDeSaude("Unimed", "Master", "2 077 573690267849 2", LocalDate.of(2027, 12, 30));
+        PlanoDeSaude plano4 = new PlanoDeSaude("Notre Dame", "Advance", "4534 3456 3456 2222 989 0004", LocalDate.of(2026, 12, 30));
         
         planoDeSaude.add(plano1);
         planoDeSaude.add(plano2);
@@ -64,22 +65,21 @@ public class PlanoDeSaudeDao {
     public static DefaultTableModel getPlanoDeSaudeModel (){
         
         String[] titulos = {"CÓDIGO", "OPERADORA", "CATEGORIA", "NÚMERO", "VALIDADE"};
-        String[][] dados = new String[planoDeSaude.size()] [3]; 
+        String[][] dados = new String[planoDeSaude.size()] [5]; 
         //o int tem que ser fora do for
         
         int i = 0;
         
-        for (PlanoDeSaude plano : planoDeSaude){
-            dados[i][0] = plano.getCodigo().toString();
-            dados[i][1] = plano.getOperadora();
-            dados[i][2] = plano.getCategoria();
-            dados[1][3] = plano.getNumero();
-            dados[1][4] = plano.getValidade().toString();
+        for (PlanoDeSaude e : planoDeSaude){
+            dados[i][0] = e.getCodigo().toString();
+            dados[i][1] = e.getOperadora();
+            dados[i][2] = e.getCategoria();
+            dados[i][3] = e.getNumero();
+            dados[i][4] = e.getValidade().toString();
             i++;
         }
-        DefaultTableModel model = new DefaultTableModel(dados, titulos);
         
-        return model;
+        return new DefaultTableModel(dados, titulos);
     }
     
     

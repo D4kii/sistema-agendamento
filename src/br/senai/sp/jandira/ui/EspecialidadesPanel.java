@@ -23,9 +23,7 @@ public class EspecialidadesPanel extends javax.swing.JPanel {
         return linha;
     }
     
-    private void setLinha(){
-        linha = tabelaEspecialidadesJTablel.getSelectedRow();
-    }
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

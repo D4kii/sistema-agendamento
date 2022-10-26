@@ -2,6 +2,7 @@ package br.senai.sp.jandira.dao;
 
 import br.senai.sp.jandira.model.Especialidade;
 import java.util.ArrayList;
+import java.util.Objects;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -26,7 +27,7 @@ public class EspecialidadeDao {
     public static Especialidade getEspecialidade(Integer codigo) { // READ
 
         for (Especialidade e : especialidades) {
-            if (e.getCodigo() == codigo) {
+            if (Objects.equals(e.getCodigo(), codigo)) {
                 return e;
             }
         }
@@ -37,7 +38,7 @@ public class EspecialidadeDao {
     
     public static void atualizar(Especialidade especialidadeAtualizada) { // UPDATE
         for (Especialidade e : especialidades) {
-            if (e.getCodigo() == especialidadeAtualizada.getCodigo()) {
+            if (Objects.equals(e.getCodigo(), especialidadeAtualizada.getCodigo())) {
                 especialidades.set(especialidades.indexOf(e), especialidadeAtualizada);
                 break;
             }

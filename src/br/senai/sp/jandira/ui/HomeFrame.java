@@ -5,7 +5,7 @@ import java.awt.Toolkit;
 
 public class HomeFrame extends javax.swing.JFrame {
     
-    private PlanoDeSaudePanel planoDeSaudePanel;
+    private PlanoDeSaudePanel planoDeSaudePanel1;
     private EspecialidadesPanel especialidadesPanel;
     
     private final int POS_X = 30;
@@ -209,20 +209,15 @@ public class HomeFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_pacienteButtonActionPerformed
 
     private void especialidadesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_especialidadesButtonActionPerformed
-        especialidadesButton.setBackground(new java.awt.Color(255,204,51));
-        planosButton.setBackground(new java.awt.Color(255,204,51));
-        homeButton.setBackground(new java.awt.Color(255,204,51));
         homePanel.setVisible(false);
+        planoDeSaudePanel1.setVisible(false);
         especialidadesPanel.setVisible(true);
         
     }//GEN-LAST:event_especialidadesButtonActionPerformed
 
     private void planosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_planosButtonActionPerformed
-        especialidadesButton.setBackground(new java.awt.Color(255,204,51));
-        planosButton.setBackground(new java.awt.Color(255,204,51));
-        homeButton.setBackground(new java.awt.Color(255,204,51));
         homePanel.setVisible(false);
-        planoDeSaudePanel.setVisible(true);
+        planoDeSaudePanel1.setVisible(true);
         especialidadesPanel.setVisible(false);
         
     }//GEN-LAST:event_planosButtonActionPerformed
@@ -241,7 +236,7 @@ public class HomeFrame extends javax.swing.JFrame {
         homeButton.setBackground(new java.awt.Color(255,204,51));
         homePanel.setVisible(true);
         especialidadesPanel.setVisible(false);
-        planoDeSaudePanel.setVisible(false);
+        planoDeSaudePanel1.setVisible(false);
         
     }//GEN-LAST:event_homeButtonActionPerformed
 
@@ -274,10 +269,10 @@ public class HomeFrame extends javax.swing.JFrame {
         getContentPane().add(especialidadesPanel);
         especialidadesPanel.setVisible(false);
         
-//        planoDeSaudePanel = new PlanoDeSaudePanel();
-//        planoDeSaudePanel.setBounds(POS_X, POS_Y, WIDTH, HEIGHT);
-//        getContentPane().add(planoDeSaudePanel);
-//        planoDeSaudePanel.setVisible(false);
+        planoDeSaudePanel1 = new PlanoDeSaudePanel();
+        planoDeSaudePanel1.setBounds(POS_X, POS_Y,LARGURA, ALTURA);
+        getContentPane().add(planoDeSaudePanel1);
+        planoDeSaudePanel1.setVisible(false);
         
     }
 

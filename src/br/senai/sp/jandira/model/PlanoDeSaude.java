@@ -1,27 +1,43 @@
 package br.senai.sp.jandira.model;
 
 import java.time.LocalDate;
+import javax.swing.JOptionPane;
 
 public class PlanoDeSaude {
 	
-        
+        private static int contador;
 	private String operadora;
 	private String categoria;
 	private String numero;
 	private LocalDate validade;
-	private static Integer codigo;
+	private Integer codigo;
 	
-	public PlanoDeSaude(String operadora, String categoria, String numero, String validade) {
+	public PlanoDeSaude(String operadora) {
 		this.operadora = operadora;
 		this.codigo++;
+                gerarCodigo();
 	}
 	
-	public PlanoDeSaude() {
-		this.codigo++;
-	}
-	
-	public void setOperadora(String operadora) {
+	public PlanoDeSaude(String operadora, String categoria, String numero, LocalDate validade) {
 		this.operadora = operadora;
+                this.categoria = categoria;
+                this.numero = numero;
+                this.validade = validade;
+                gerarCodigo();
+	}
+        public PlanoDeSaude() { // Construtor Default / Padrão
+        this.contador++;
+        this.codigo = contador;
+        }
+
+        public static int getContador() {
+            return contador;
+        }
+        
+
+    public void setOperadora(String operadora) {
+		this.operadora = operadora;
+                gerarCodigo();
 	}
 	
 	public String getOperadora() {
@@ -52,9 +68,23 @@ public class PlanoDeSaude {
 		return validade;
 		
 	}
+        private void gerarCodigo(){
+        this.contador++;
+        this.codigo = contador;
+    }
 	
 	public Integer getCodigo() {
 		return codigo;
 	}
+        
+        public void setNomeOperadora(String operadora) {
+
+        if (operadora.length() >= 3) {
+            this.operadora = operadora;
+        } else {
+            JOptionPane.showMessageDialog(null, operadora + "Não é um nome válido!");
+        }
+
+    }
 
 }
