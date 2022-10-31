@@ -200,6 +200,19 @@ public class EspecialidadeDialog extends javax.swing.JDialog {
     
     
     private void adicionar() {
+        if (nomeEspecialidadeField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null,
+                    "O nome é obrigatório!",
+                    "Especialidade",
+                    JOptionPane.WARNING_MESSAGE);  
+        }
+        else if (descricaoEspecialidadeField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null,
+                    "Descrição é obrigatória!",
+                    "Descrição de especialidade",
+                    JOptionPane.WARNING_MESSAGE);  
+        } else {
+        
         Especialidade novaEspecialidade = new Especialidade();
         novaEspecialidade.setNome(nomeEspecialidadeField.getText());
         novaEspecialidade.setDescricao(descricaoEspecialidadeField.getText());
@@ -213,6 +226,7 @@ public class EspecialidadeDialog extends javax.swing.JDialog {
                 JOptionPane.INFORMATION_MESSAGE);
         
         dispose();
+    }
     }
     
     

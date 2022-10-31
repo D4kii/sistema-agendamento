@@ -52,9 +52,9 @@ public class PlanoDeSaudeDao {
     
     public static void criarListaPlanos(){
         PlanoDeSaude plano1 = new PlanoDeSaude("Amil", "One 5000 Black", "067296783", LocalDate.of(2024, 12, 30));
-        PlanoDeSaude plano2 = new PlanoDeSaude("Bradesco", "Nacional Flex", "343 920 297885 007", LocalDate.of(2025, 12, 30));
-        PlanoDeSaude plano3 = new PlanoDeSaude("Unimed", "Master", "2 077 573690267849 2", LocalDate.of(2027, 12, 30));
-        PlanoDeSaude plano4 = new PlanoDeSaude("Notre Dame", "Advance", "4534 3456 3456 2222 989 0004", LocalDate.of(2026, 12, 30));
+        PlanoDeSaude plano2 = new PlanoDeSaude("Bradesco", "Nacional Flex", "067233333", LocalDate.of(2025, 12, 30));
+        PlanoDeSaude plano3 = new PlanoDeSaude("Unimed", "Master", "067296565", LocalDate.of(2027, 12, 30));
+        PlanoDeSaude plano4 = new PlanoDeSaude("Notre Dame", "Advance", "873256783", LocalDate.of(2026, 12, 30));
         
         planoDeSaude.add(plano1);
         planoDeSaude.add(plano2);

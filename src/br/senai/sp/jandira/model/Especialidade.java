@@ -45,13 +45,7 @@ public class Especialidade {
     }
 
     public void setNome(String nome) {
-
-        if (nome.length() >= 3) {
-            this.nome = nome;
-        } else {
-            JOptionPane.showMessageDialog(null, nome + "Não é um nome válido!\nDeve conter pelo menos 3 letras!");
-        }
-
+        this.nome= nome;
     }
 
     public String getNome() {
@@ -59,13 +53,7 @@ public class Especialidade {
     }
 
     public void setDescricao(String descricao) {
-
-        if (descricao.length() >= 10) {
-            this.descricao = descricao;
-        } else {
-            JOptionPane.showMessageDialog(null, descricao + "A descrição deve conter pelo menos 10 caracteres!");
-        }
-
+        this.descricao= descricao;
     }
 
     public String getDescricao() {

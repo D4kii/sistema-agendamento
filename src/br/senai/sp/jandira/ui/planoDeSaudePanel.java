@@ -200,10 +200,10 @@ public class PlanoDeSaudePanel extends javax.swing.JPanel {
         
         tabelaPlanosDeSaudeJTablel.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         tabelaPlanosDeSaudeJTablel.getColumnModel().getColumn(0).setPreferredWidth(50);
-        tabelaPlanosDeSaudeJTablel.getColumnModel().getColumn(1).setPreferredWidth(200);
+        tabelaPlanosDeSaudeJTablel.getColumnModel().getColumn(1).setPreferredWidth(150);
         tabelaPlanosDeSaudeJTablel.getColumnModel().getColumn(2).setPreferredWidth(200);
         tabelaPlanosDeSaudeJTablel.getColumnModel().getColumn(3).setPreferredWidth(200);
-        tabelaPlanosDeSaudeJTablel.getColumnModel().getColumn(4).setPreferredWidth(100);
+        tabelaPlanosDeSaudeJTablel.getColumnModel().getColumn(4).setPreferredWidth(130);
         
     }
 
