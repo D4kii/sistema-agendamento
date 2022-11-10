@@ -20,10 +20,16 @@ public class Especialidade {
         this.descricao = descricao;
         gerarCodigo();
     }
+    
+    public Especialidade(String nome, String descricao, Integer codigo) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.codigo = codigo;
+        this.contador = codigo;
+    }
 
     public Especialidade() { // Construtor Default / Padrão
-        this.contador++;
-        this.codigo = contador;
+        gerarCodigo();
     }
 
     // Métodos de acesso aos atributos
@@ -32,7 +38,7 @@ public class Especialidade {
     }
 
     private void gerarCodigo(){
-        this.contador++;
+        contador++;
         this.codigo = contador;
     }
     
@@ -59,5 +65,8 @@ public class Especialidade {
     public String getDescricao() {
         return descricao;
     }
-
+    
+    public String getEspecialidadeSeparadaPorPontoEVirgula(){
+        return this.codigo + ";" + this.nome + ";" + this.descricao;
+    }
 }

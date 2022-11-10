@@ -1,12 +1,23 @@
 package br.senai.sp.jandira.dao;
 
 import br.senai.sp.jandira.model.Especialidade;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Objects;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 public class EspecialidadeDao {
+    
+    private final static String URL ="C:\\Users\\22282183\\Java\\Especialidade.txt";
+    private final static Path PATH = Paths.get(URL);
 
     /*
     Essa classe será responsável pela persistência de dados
@@ -18,6 +29,21 @@ public class EspecialidadeDao {
 
     public static void gravar(Especialidade e) { // CREATE
         especialidades.add(e);
+        
+        //***GRAVAR EM ARQUIVO ***
+        try {
+            BufferedWriter escritor;
+            escritor = Files.newBufferedWriter(
+                    PATH,
+                    StandardOpenOption.APPEND,
+                    StandardOpenOption.WRITE);
+            escritor.write(e.getCodigo() + ";" + e.getNome() + ";" + e.getDescricao());
+            escritor.newLine();
+            escritor.close();
+        } catch (IOException erro) {
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro");
+        }
+        
     }
 
     public static ArrayList<Especialidade> getEspecialidades() { // READ
@@ -38,8 +64,12 @@ public class EspecialidadeDao {
     
     public static void atualizar(Especialidade especialidadeAtualizada) { // UPDATE
         for (Especialidade e : especialidades) {
-            if (Objects.equals(e.getCodigo(), especialidadeAtualizada.getCodigo())) {
-                especialidades.set(especialidades.indexOf(e), especialidadeAtualizada);
+            if (Objects.equals(
+                    e.getCodigo(),
+                    especialidadeAtualizada.getCodigo())) {
+                        especialidades.set(
+                        especialidades.indexOf(e),
+                        especialidadeAtualizada);
                 break;
             }
         }
@@ -58,15 +88,36 @@ public class EspecialidadeDao {
     
     // Criar uma lista inicial de especialidades
     public static void criarListaEspecialidades() {
-        Especialidade e1 = new Especialidade("Cardiologia",  "Parte da medicina que cuida do coração");
-        Especialidade e2 = new Especialidade("Nefrologia", "Parte da medicina que estuda doenças relacionadas ao rim");
-        Especialidade e3 = new Especialidade("Otorrinolaringologia", "Parte da medicina que cuida das vias nasais");
-        Especialidade e4 = new Especialidade("Fisioterapia", "Parte da medicina que cuida dos musculos e da coluna");
         
-        especialidades.add(e1);
-        especialidades.add(e2);
-        especialidades.add(e3);
-        especialidades.add(e4);
+        try {
+            BufferedReader leitor = Files.newBufferedReader(PATH);
+            
+            String linha= leitor.readLine();
+            
+            while(linha != null) {
+                
+                // Transformar os dados da linha em uma especialidade
+                String[] vetor = linha.split(";");
+                Especialidade e = new Especialidade(
+                        vetor[1],
+                        vetor[2],
+                        Integer.valueOf(vetor[0]));
+                
+                //Guardar Especialidade na lista
+                especialidades.add(e);
+                
+                //Ler a próxima linha
+                linha = leitor.readLine();
+            }
+            leitor.close();
+            
+        } catch (IOException erro) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Ocorreu um erro ao ler o arquivo");
+        }
+        
+        System.out.println(especialidades.size());
         
     }
     

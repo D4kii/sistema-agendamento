@@ -2,16 +2,44 @@
 package br.senai.sp.jandira.dao;
 
 import br.senai.sp.jandira.model.PlanoDeSaude;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
 public class PlanoDeSaudeDao {
+    public static final String URL = "C:\\Users\\22282183\\Java\\PlanoDeSaude.txt";
+    public static final Path PATH = Paths.get(URL);
+    
+    
     private static ArrayList<PlanoDeSaude> planoDeSaude = new ArrayList<>();
     
     public static void gravar(PlanoDeSaude e) { //CREATE
         planoDeSaude.add(e);
+        
+        try {
+            BufferedWriter escritor;
+            escritor = Files.newBufferedWriter(
+                    PATH,
+                    StandardOpenOption.APPEND,
+                    StandardOpenOption.WRITE);
+            escritor.write(e.getCodigo() + ";" + e.getOperadora() + ";" + e.getCategoria() + ";" + e.getNumero() + ";" + e.getValidade());
+            escritor.newLine();
+            escritor.close();
+        } catch (IOException erro) {
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro");
+        }
+        
     }
     
     public static ArrayList<PlanoDeSaude> getPlanoDeSaudes(){ //READ
@@ -51,15 +79,47 @@ public class PlanoDeSaudeDao {
     }
     
     public static void criarListaPlanos(){
-        PlanoDeSaude plano1 = new PlanoDeSaude("Amil", "One 5000 Black", "067296783", LocalDate.of(2024, 12, 30));
-        PlanoDeSaude plano2 = new PlanoDeSaude("Bradesco", "Nacional Flex", "067233333", LocalDate.of(2025, 12, 30));
-        PlanoDeSaude plano3 = new PlanoDeSaude("Unimed", "Master", "067296565", LocalDate.of(2027, 12, 30));
-        PlanoDeSaude plano4 = new PlanoDeSaude("Notre Dame", "Advance", "873256783", LocalDate.of(2026, 12, 30));
         
-        planoDeSaude.add(plano1);
-        planoDeSaude.add(plano2);
-        planoDeSaude.add(plano3);
-        planoDeSaude.add(plano4);
+                
+        try {
+            BufferedReader leitor = Files.newBufferedReader(PATH);
+            
+            String linha= leitor.readLine();
+            
+            while(linha != null) {
+                
+                // Transformar os dados da linha em uma especialidade
+                String[] vetorPlano = linha.split(";");
+                String[] data = vetorPlano[4].split("/");
+                PlanoDeSaude e = new PlanoDeSaude(
+                        vetorPlano[1],
+                        vetorPlano[2],
+                        vetorPlano[3], 
+                        LocalDate.of(
+                                Integer.parseInt(data[2]), 
+                                Integer.parseInt(data[1]), 
+                                Integer.parseInt(data[0])),
+                        Integer.valueOf(vetorPlano[0]));
+                
+                    
+                
+                //Guardar Especialidade na lista
+                planoDeSaude.add(e);
+                
+                //Ler a próxima linha
+                linha = leitor.readLine();
+            }
+            leitor.close();
+            
+        } catch (IOException erro) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Ocorreu um erro ao ler o arquivo");
+        }
+        
+        System.out.println(planoDeSaude.size());
+        
+        
     }
     
     public static DefaultTableModel getPlanoDeSaudeModel (){

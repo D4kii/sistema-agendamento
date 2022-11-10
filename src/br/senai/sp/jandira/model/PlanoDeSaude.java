@@ -25,6 +25,16 @@ public class PlanoDeSaude {
                 this.validade = validade;
                 gerarCodigo();
 	}
+        
+	public PlanoDeSaude(String operadora, String categoria, String numero, LocalDate validade, Integer codigo) {
+		this.operadora = operadora;
+                this.categoria = categoria;
+                this.numero = numero;
+                this.validade = validade;
+                this.contador = codigo;
+                this.codigo = codigo;
+	}
+        
         public PlanoDeSaude() { // Construtor Default / Padrão
         this.contador++;
         this.codigo = contador;
@@ -85,6 +95,9 @@ public class PlanoDeSaude {
             JOptionPane.showMessageDialog(null, operadora + "Não é um nome válido!");
         }
 
+    }
+        public String getPlanoDeSaudeSeparadaPorPontoEVirgula(){
+        return this.codigo + ";" + this.operadora + ";" + this.categoria + ";" + this.numero + ";" + this.validade;
     }
 
 }
