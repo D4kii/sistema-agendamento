@@ -80,21 +80,20 @@ public class EspecialidadeDao {
     }
 
     public static void excluir(Integer codigo) { // DELETE
-        
+
         for (Especialidade e : especialidades) {
-                if (e.getCodigo().equals(codigo)) {
-                    especialidades.remove(e);
-                    break;
-                } 
-                
-                }
+            if (e.getCodigo().equals(codigo)) {
+                especialidades.remove(e);
+                break;
+            }
+
+        }
         atualizarArquivo();
-        
-       
     }
-    private static void atualizarArquivo(){
-        
-    //PASSO 01 - Criar uma representação dos arquivos que serão manipulados
+
+    private static void atualizarArquivo() {
+
+        //PASSO 01 - Criar uma representação dos arquivos que serão manipulados
         File arquivoAtual = new File(URL);
         File arquivoTemp = new File(URL_TEMP);
 
@@ -107,26 +106,24 @@ public class EspecialidadeDao {
                     PATH_TEMP,
                     StandardOpenOption.APPEND,
                     StandardOpenOption.WRITE);
-            
-            
+
             //Iterar na lista para adicionar as especialidades no arquivo temporáril, 
             //exceto o registro que  não queremos mais
             for (Especialidade e : especialidades) {
                 bwTemp.write(e.getEspecialidadeSeparadaPorPontoEVirgula());
                 bwTemp.newLine();
             }
-            
+
             bwTemp.close();
-            
+
             arquivoAtual.delete();
-            
+
             arquivoTemp.renameTo(arquivoAtual);
-            
-            
+
         } catch (IOException e) {
             e.printStackTrace();
         }
-    
+
     }
 
     // Criar uma lista inicial de especialidades
