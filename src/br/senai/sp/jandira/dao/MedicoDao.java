@@ -48,7 +48,7 @@ public class MedicoDao {
         return medico;
     }
 
-    public static Medico getPlanoDeSaude(Integer codigo) { // READ
+    public static Medico getMedico(Integer codigo) { // READ
 
         for (Medico e : medico) {
             if (e.getCodigo().equals(codigo)) {
@@ -120,49 +120,57 @@ public class MedicoDao {
 
     }
 
-//    public static void criarListaPlanos() {
-//
-//        try {
-//            BufferedReader leitor = Files.newBufferedReader(PATH);
-//
-//            String linha = leitor.readLine();
-//
-//            while (linha != null) {
-//
-//                // Transformar os dados da linha em uma especialidade
-//                String[] vetor = linha.split(";");
-//                String[] data = vetor[6].split("/");
-//                Especialidade especialidade = new Especialidade();
-//                Medico e;
+    public static void criarListaMedicos() {
+
+        try {
+            BufferedReader leitor = Files.newBufferedReader(PATH);
+
+            String linha = leitor.readLine();
+
+            while (linha != null) {
+
+                // Transformar os dados da linha em uma especialidade
+                String[] vetor = linha.split(";");
+                String[] data = vetor[6].split("/");
+                Especialidade especialidade = new Especialidade();
+                Medico e;
+                
+//                String[] es = vetor[5].split("#");
+//                
+//                for(String e : es) {
+//                    
+//                }
+//                
 //                e = new Medico(
-//                        vetor[6],
-//                        vetor[4],
-//                        vetor[0],
-//                        Arrays.toString(especialidade.getNome()),
 //                        vetor[2],
+//                        vetor[3],
+//                        vetor[4],
+//                        vetor[5].split("#"),
+//                        vetor[1],
 //                        LocalDate.of(
 //                                Integer.parseInt(data[2]),
 //                                Integer.parseInt(data[1]),
 //                                Integer.parseInt(data[0])),
-//                        Integer.valueOf(vetor[5]));
-//
+//                        Integer.valueOf(vetor[0]));
+
 //                //Guardar Especialidade na lista
 //                medico.add(e);
-//
-//                //Ler a próxima linha
-//                linha = leitor.readLine();
-//            }
-//            leitor.close();
-//
-//        } catch (IOException erro) {
-//            JOptionPane.showMessageDialog(
-//                    null,
-//                    "Ocorreu um erro ao ler o arquivo");
-//        }
-//
-//        System.out.println(medico.size());
-//
-//    }
+
+                //Ler a próxima linha
+                linha = leitor.readLine();
+            }
+            
+            leitor.close();
+
+        } catch (IOException erro) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Ocorreu um erro ao ler o arquivo");
+        }
+
+        System.out.println(medico.size());
+
+    }
 
     public static DefaultTableModel getMedicoModel() {
 
@@ -171,7 +179,6 @@ public class MedicoDao {
         //o int tem que ser fora do for
 
         int i = 0;
-
         for (Medico e : medico) {
             dados[i][0] = e.getCodigo().toString();
             dados[i][1] = e.getCrm();

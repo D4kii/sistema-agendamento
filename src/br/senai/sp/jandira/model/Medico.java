@@ -1,9 +1,11 @@
 package br.senai.sp.jandira.model;
 
 import java.time.LocalDate;
+import javax.swing.JList;
 
 public class Medico {
-
+    
+    private JList especialidadesList;
     private Integer codigo;
     private String nome;
     private LocalDate nascimentoMedico;
@@ -118,6 +120,15 @@ public class Medico {
         this.crm = crm;
 
     }
+
+    public JList getEspecialidadesList() {
+        return especialidadesList;
+    }
+
+    public void setEspecialidadesList(JList especialidadesList) {
+        this.especialidadesList = especialidadesList;
+    }
+    
     
      public String getMedicoSeparadoPorPontoEVirgula() {
         return this.codigo + ";" + this.crm + ";" + this.nome + ";" + this.telefone + ";" + this.email + ";" + this.nascimentoMedico + ";" + this.especialidades;
