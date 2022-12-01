@@ -1,15 +1,15 @@
 package br.senai.sp.jandira.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import javax.swing.JList;
 
 public class Medico {
-    
-    private JList especialidadesList;
+
     private Integer codigo;
     private String nome;
     private LocalDate nascimentoMedico;
-    private Especialidade[] especialidades;
+    private ArrayList<Especialidade> especialidades;
     private String telefone;
     private String email;
     private String crm;
@@ -21,7 +21,7 @@ public class Medico {
         gerarCodigo();
     }
 
-    public Medico(String nome, String telefone, String email, Especialidade[] especialidades, String crm, LocalDate validadedataNascimento) {
+    public Medico(String nome, String telefone, String email, ArrayList especialidades, String crm, LocalDate validadedataNascimento) {
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
@@ -31,7 +31,7 @@ public class Medico {
         gerarCodigo();
     }
 
-    public Medico(String nome, String telefone, String email, Especialidade[] especialidades, String crm, LocalDate validadedataNascimento, Integer codigo) {
+    public Medico(String nome, String telefone, String email, String crm, LocalDate validadedataNascimento, Integer codigo, ArrayList<Especialidade> especialidades) {
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
@@ -81,12 +81,12 @@ public class Medico {
         return nascimentoMedico;
     }
 
-    public Especialidade[] getEspecialidades() {
+    public ArrayList getEspecialidades() {
         return especialidades;
 
     }
 
-    public void setEspecialidades(Especialidade[] especialidades) {
+    public void setEspecialidades(ArrayList especialidades) {
         this.especialidades = especialidades;
 
     }
@@ -121,17 +121,8 @@ public class Medico {
 
     }
 
-    public JList getEspecialidadesList() {
-        return especialidadesList;
-    }
-
-    public void setEspecialidadesList(JList especialidadesList) {
-        this.especialidadesList = especialidadesList;
-    }
-    
-    
-     public String getMedicoSeparadoPorPontoEVirgula() {
+    public String getMedicoSeparadoPorPontoEVirgula() {
         return this.codigo + ";" + this.crm + ";" + this.nome + ";" + this.telefone + ";" + this.email + ";" + this.nascimentoMedico + ";" + this.especialidades;
     }
-    
+
 }

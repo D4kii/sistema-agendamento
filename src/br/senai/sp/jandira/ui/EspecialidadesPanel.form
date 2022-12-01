@@ -8,6 +8,7 @@
           <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder/>
           </Border>
+          <Font PropertyName="font" name="Arial" size="12" style="1"/>
         </TitledBorder>
       </Border>
     </Property>

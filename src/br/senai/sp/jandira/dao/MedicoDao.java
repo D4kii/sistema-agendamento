@@ -2,10 +2,12 @@ package br.senai.sp.jandira.dao;
 
 import br.senai.sp.jandira.model.Especialidade;
 import br.senai.sp.jandira.model.Medico;
+import java.awt.List;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -14,6 +16,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -101,8 +104,6 @@ public class MedicoDao {
                     StandardOpenOption.APPEND,
                     StandardOpenOption.WRITE);
 
-            //Iterar na lista para adicionar as especialidades no arquivo temporáril, 
-            //exceto o registro que  não queremos mais
             for (Medico e : medico) {
                 bwTemp.write(e.getMedicoSeparadoPorPontoEVirgula());
                 bwTemp.newLine();
@@ -120,6 +121,20 @@ public class MedicoDao {
 
     }
 
+    public static ArrayList<Especialidade> separarEspecialidades(String linha) {
+        String[] vetor = linha.split("_");
+        int codigoEsp = 5;
+
+        ArrayList<Especialidade> especialidades = new ArrayList<>();
+
+        while (vetor.length > codigoEsp) {
+            especialidades.add(EspecialidadeDao.getEspecialidade(Integer.valueOf(vetor[codigoEsp])));
+            codigoEsp++;
+
+        }
+        return especialidades;
+    }
+
     public static void criarListaMedicos() {
 
         try {
@@ -132,34 +147,29 @@ public class MedicoDao {
                 // Transformar os dados da linha em uma especialidade
                 String[] vetor = linha.split(";");
                 String[] data = vetor[6].split("/");
-                Especialidade especialidade = new Especialidade();
-                Medico e;
-                
-//                String[] es = vetor[5].split("#");
-//                
-//                for(String e : es) {
-//                    
-//                }
-//                
-//                e = new Medico(
-//                        vetor[2],
-//                        vetor[3],
-//                        vetor[4],
-//                        vetor[5].split("#"),
-//                        vetor[1],
-//                        LocalDate.of(
-//                                Integer.parseInt(data[2]),
-//                                Integer.parseInt(data[1]),
-//                                Integer.parseInt(data[0])),
-//                        Integer.valueOf(vetor[0]));
+                Medico med;
 
-//                //Guardar Especialidade na lista
-//                medico.add(e);
+                
+
+                med = new Medico(
+                        vetor[2],
+                        vetor[3],
+                        vetor[4],
+                        vetor[1],
+                        LocalDate.of(
+                                Integer.parseInt(data[2]),
+                                Integer.parseInt(data[1]),
+                                Integer.parseInt(data[0])),
+                        Integer.valueOf(vetor[0]),
+                        separarEspecialidades(linha));
+
+                //Guardar Especialidade na lista
+                medico.add(med);
 
                 //Ler a próxima linha
                 linha = leitor.readLine();
             }
-            
+
             leitor.close();
 
         } catch (IOException erro) {
@@ -174,8 +184,8 @@ public class MedicoDao {
 
     public static DefaultTableModel getMedicoModel() {
 
-        String[] titulos = {"CÓDIGO", "CRM", "NOME", "TELEFONE", "E-MAIL", "ESPECIALIDADES", "DATA DE NASCIMENTO"};
-        String[][] dados = new String[medico.size()][6];
+        String[] titulos = {"CÓDIGO", "CRM", "NOME", "TELEFONE"};
+        String[][] dados = new String[medico.size()][4];
         //o int tem que ser fora do for
 
         int i = 0;
@@ -184,9 +194,7 @@ public class MedicoDao {
             dados[i][1] = e.getCrm();
             dados[i][2] = e.getNome();
             dados[i][3] = e.getTelefone();
-            dados[i][4] = e.getEmail();
-            dados[i][5] = Arrays.toString(e.getEspecialidades());
-            dados[i][6] = e.getNascimentoMedico().toString();
+            
             i++;
         }
 

@@ -11,6 +11,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Objects;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -179,6 +180,16 @@ public class EspecialidadeDao {
         DefaultTableModel model = new DefaultTableModel(dados, titulos);
 
         return model;
+    }
+    
+    public static DefaultListModel<Especialidade> preencherEspecialidade() {
+        DefaultListModel<Especialidade> listaEspecialidade = new DefaultListModel<>();
+        
+        for (Especialidade listar : getEspecialidades()) {
+            listaEspecialidade.addElement(listar);
+            listaEspecialidade.toArray();
+        }
+        return listaEspecialidade;
     }
 
 }

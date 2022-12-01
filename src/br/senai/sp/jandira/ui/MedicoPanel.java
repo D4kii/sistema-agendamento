@@ -1,4 +1,3 @@
-
 package br.senai.sp.jandira.ui;
 
 import br.senai.sp.jandira.dao.MedicoDao;
@@ -7,11 +6,10 @@ import br.senai.sp.jandira.model.OperacaoEnum;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
-
 public class MedicoPanel extends javax.swing.JPanel {
 
     private int linha;
-    
+
     public MedicoPanel() {
         initComponents();
         MedicoDao.criarListaMedicos();
@@ -23,7 +21,6 @@ public class MedicoPanel extends javax.swing.JPanel {
         return linha;
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -34,6 +31,7 @@ public class MedicoPanel extends javax.swing.JPanel {
         excluirMedicoButton1 = new javax.swing.JButton();
         adicionarMedicoButton = new javax.swing.JButton();
 
+        setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Lista de Médicos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         setPreferredSize(new java.awt.Dimension(750, 380));
         setLayout(null);
 
@@ -91,44 +89,66 @@ public class MedicoPanel extends javax.swing.JPanel {
         add(adicionarMedicoButton);
         adicionarMedicoButton.setBounds(590, 280, 70, 50);
     }// </editor-fold>//GEN-END:initComponents
-    private void editarMedico(){
+
+    private void editarMedicoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarMedicoButtonActionPerformed
+        if (getLinha() != -1) {
+            editarMedico();
+        } else {
+            JOptionPane.showConfirmDialog(
+                    this,
+                    "Por favor, selecione o plano que deseja editar.",
+                    "Médicos",
+                    JOptionPane.WARNING_MESSAGE);
+        }
+
+    }//GEN-LAST:event_editarMedicoButtonActionPerformed
+    private void editarMedico() {
         Medico medico = new MedicoDao().getMedico(getCodigo());
-        
+
         MedicoDialog medicoDialog = new MedicoDialog(null, true, medico, OperacaoEnum.EDITAR);
         medicoDialog.setVisible(true);
-       
-       preencherTabela();
+
+        preencherTabela();
     }
-        
+
+
+    private void excluirMedicoButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirMedicoButton1ActionPerformed
+        if (getLinha() != -1) {
+            excluirMedico(linha);
+        } else {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Por favor, selecione o médico que deseja excluir",
+                    "Atenção",
+                    JOptionPane.OK_OPTION);
+        }
+    }//GEN-LAST:event_excluirMedicoButton1ActionPerformed
     private void excluirMedico(int linha) {
-         
-        
+
         int resposta = JOptionPane.showConfirmDialog(
                 this,
                 "Confirma exclusão",
-                "Atenção", 
+                "Atenção",
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE);
-        
-        if(resposta == 0){
-        
-        MedicoDao.excluir(getCodigo());
-        
-        preencherTabela();
+
+        if (resposta == 0) {
+
+            MedicoDao.excluir(getCodigo());
+
+            preencherTabela();
         }
     }
-    private void editarMedicoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarMedicoButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_editarMedicoButtonActionPerformed
-
-    private void excluirMedicoButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirMedicoButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_excluirMedicoButton1ActionPerformed
 
     private void adicionarMedicoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarMedicoButtonActionPerformed
-        // TODO add your handling code here:
+        MedicoDialog medicoDialog
+                = new MedicoDialog(null, true, OperacaoEnum.ADICIONAR);
+        medicoDialog.setVisible(true);
+
+        preencherTabela();
+        
     }//GEN-LAST:event_adicionarMedicoButtonActionPerformed
-   private Integer getCodigo(){
+    private Integer getCodigo() {
         String codigoStr = tabelaMedicosJTablel.getValueAt(linha, 0).toString();
         Integer codigo = Integer.valueOf(codigoStr);
         return codigo;
@@ -141,25 +161,25 @@ public class MedicoPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPaneMedico;
     private javax.swing.JTable tabelaMedicosJTablel;
     // End of variables declaration//GEN-END:variables
-private void preencherTabela(){
-    
+private void preencherTabela() {
+
         tabelaMedicosJTablel.setModel(MedicoDao.getMedicoModel()
         );
-        
+
         ajustarTabela();
     }
 
     private void ajustarTabela() {
         tabelaMedicosJTablel.getTableHeader().setReorderingAllowed(false);
-        
+
         tabelaMedicosJTablel.setDefaultEditor(Object.class, null);
-        
+
         tabelaMedicosJTablel.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        tabelaMedicosJTablel.getColumnModel().getColumn(0).setPreferredWidth(50);
-        tabelaMedicosJTablel.getColumnModel().getColumn(1).setPreferredWidth(150);
+        tabelaMedicosJTablel.getColumnModel().getColumn(0).setPreferredWidth(70);
+        tabelaMedicosJTablel.getColumnModel().getColumn(1).setPreferredWidth(120);
         tabelaMedicosJTablel.getColumnModel().getColumn(2).setPreferredWidth(200);
-        tabelaMedicosJTablel.getColumnModel().getColumn(3).setPreferredWidth(200);
-        tabelaMedicosJTablel.getColumnModel().getColumn(4).setPreferredWidth(130);
+        tabelaMedicosJTablel.getColumnModel().getColumn(3).setPreferredWidth(150);
         
+
     }
 }

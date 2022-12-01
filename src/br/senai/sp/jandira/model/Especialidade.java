@@ -2,7 +2,7 @@ package br.senai.sp.jandira.model;
 
 import javax.swing.JOptionPane;
 
-public class Especialidade {
+public final class Especialidade{
 
     private static int contador = 99;
     private Integer codigo;
@@ -20,7 +20,7 @@ public class Especialidade {
         this.descricao = descricao;
         gerarCodigo();
     }
-    
+
     public Especialidade(String nome, String descricao, Integer codigo) {
         this.nome = nome;
         this.descricao = descricao;
@@ -37,11 +37,11 @@ public class Especialidade {
         return contador;
     }
 
-    private void gerarCodigo(){
+    private void gerarCodigo() {
         contador++;
         this.codigo = contador;
     }
-    
+
     public Integer getCodigo() {
         return codigo;
     }
@@ -51,7 +51,11 @@ public class Especialidade {
     }
 
     public void setNome(String nome) {
-        this.nome= nome;
+        this.nome = nome;
+    }
+
+    public String toString() {
+        return this.nome;
     }
 
     public String getNome() {
@@ -59,14 +63,14 @@ public class Especialidade {
     }
 
     public void setDescricao(String descricao) {
-        this.descricao= descricao;
+        this.descricao = descricao;
     }
 
     public String getDescricao() {
         return descricao;
     }
-    
-    public String getEspecialidadeSeparadaPorPontoEVirgula(){
+
+    public String getEspecialidadeSeparadaPorPontoEVirgula() {
         return this.codigo + ";" + this.nome + ";" + this.descricao;
     }
 

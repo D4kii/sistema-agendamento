@@ -7,6 +7,7 @@ public class HomeFrame extends javax.swing.JFrame {
     
     private PlanoDeSaudePanel planoDeSaudePanel1;
     private EspecialidadesPanel especialidadesPanel;
+    private MedicoPanel medicoPainel;
     
     private final int POS_X = 30;
     private final int POS_Y = 180;
@@ -201,7 +202,11 @@ public class HomeFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void medicosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medicosButtonActionPerformed
-        // TODO add your handling code here:
+        homePanel.setVisible(false);
+        planoDeSaudePanel1.setVisible(false);
+        especialidadesPanel.setVisible(false);
+        medicoPainel.setVisible(true);
+        
     }//GEN-LAST:event_medicosButtonActionPerformed
 
     private void pacienteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pacienteButtonActionPerformed
@@ -212,6 +217,7 @@ public class HomeFrame extends javax.swing.JFrame {
         homePanel.setVisible(false);
         planoDeSaudePanel1.setVisible(false);
         especialidadesPanel.setVisible(true);
+        medicoPainel.setVisible(false);
         
     }//GEN-LAST:event_especialidadesButtonActionPerformed
 
@@ -219,6 +225,7 @@ public class HomeFrame extends javax.swing.JFrame {
         homePanel.setVisible(false);
         planoDeSaudePanel1.setVisible(true);
         especialidadesPanel.setVisible(false);
+        medicoPainel.setVisible(false);
         
     }//GEN-LAST:event_planosButtonActionPerformed
 
@@ -237,6 +244,7 @@ public class HomeFrame extends javax.swing.JFrame {
         homePanel.setVisible(true);
         especialidadesPanel.setVisible(false);
         planoDeSaudePanel1.setVisible(false);
+        medicoPainel.setVisible(false);
         
     }//GEN-LAST:event_homeButtonActionPerformed
 
@@ -273,6 +281,11 @@ public class HomeFrame extends javax.swing.JFrame {
         planoDeSaudePanel1.setBounds(POS_X, POS_Y,LARGURA, ALTURA);
         getContentPane().add(planoDeSaudePanel1);
         planoDeSaudePanel1.setVisible(false);
+        
+        medicoPainel = new MedicoPanel();
+        medicoPainel.setBounds(POS_X, POS_Y,LARGURA, ALTURA);
+        getContentPane().add(medicoPainel);
+        medicoPainel.setVisible(false);
         
     }
 
