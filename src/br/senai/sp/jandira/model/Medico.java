@@ -43,7 +43,7 @@ public class Medico {
             LocalDate validadedataNascimento,
             Integer codigo,
             ArrayList<Especialidade> especialidades) {
-        
+
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
@@ -51,7 +51,7 @@ public class Medico {
         this.crm = crm;
         nascimentoMedico = validadedataNascimento;
         this.codigo = codigo;
-        
+
     }
 
     public Medico() {
@@ -132,14 +132,17 @@ public class Medico {
         this.crm = crm;
 
     }
-
-    public String arrayparaString(ArrayList<Especialidade> array) {
-        ArrayList<String> codigos = new ArrayList<>();
-        for (Especialidade e : array) {
-            codigos.add(e.getCodigo().toString());
+    public String listaString(ArrayList<Especialidade> lista){
+        ArrayList<String> codigosEspecialidade = new ArrayList<>();
+        for (Especialidade e : lista) {
+            codigosEspecialidade.add(e.getCodigo().toString());
+            
         }
-        return String.join(";", codigos);
+        
+        return String.join("-", codigosEspecialidade);
     }
+    
+
 
     public String getMedicoSeparadoPorPontoEVirgula() {
         return this.codigo + ";"
@@ -148,7 +151,7 @@ public class Medico {
                 + this.telefone + ";"
                 + this.email + ";"
                 + this.nascimentoMedico + ";"
-                + arrayparaString(this.especialidades) + ".";
+                + listaString(especialidades);
     }
 
 }

@@ -24,11 +24,11 @@ import javax.swing.table.DefaultTableModel;
 public class MedicoDao {
 
     //SENAI
-//    private final static String URL = "C:\\Users\\22282183\\Java\\Medico.txt";
-//    private final static String URL_TEMP = "C:\\Users\\22282183\\Java\\Medico-temp.txt";
+    private final static String URL = "C:\\Users\\22282183\\Java\\Medico.txt";
+    private final static String URL_TEMP = "C:\\Users\\22282183\\Java\\Medico-temp.txt";
     //CASA
-    private final static String URL = "C:\\Users\\danie\\OneDrive\\Documentos\\netBeansProjects\\arquivos\\Medico.txt";
-    private final static String URL_TEMP = "C:\\Users\\danie\\OneDrive\\Documentos\\netBeansProjects\\arquivos\\Medico-temp.txt";
+//    private final static String URL = "C:\\Users\\danie\\OneDrive\\Documentos\\netBeansProjects\\arquivos\\Medico.txt";
+//    private final static String URL_TEMP = "C:\\Users\\danie\\OneDrive\\Documentos\\netBeansProjects\\arquivos\\Medico-temp.txt";
 
     private final static Path PATH = Paths.get(URL);
     private final static Path PATH_TEMP = Paths.get(URL_TEMP);

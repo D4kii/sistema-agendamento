@@ -20,12 +20,12 @@ import javax.swing.table.TableModel;
 public class EspecialidadeDao {
     
     //SENAI
-    //private final static String URL_TEMP = "C:\\Users\\22282183\\Java\\Especialidade-temp.txt";
-    //private final static String URL = "C:\\Users\\22282183\\Java\\Especialidade.txt";
+    private final static String URL_TEMP = "C:\\Users\\22282183\\Java\\Especialidade-temp.txt";
+    private final static String URL = "C:\\Users\\22282183\\Java\\Especialidade.txt";
     
     //CASA
-    private final static String URL_TEMP = "C:\\Users\\danie\\OneDrive\\Documentos\\netBeansProjects\\arquivos\\Especialidade-temp.txt";
-    private final static String URL = "C:\\Users\\danie\\OneDrive\\Documentos\\netBeansProjects\\arquivos\\Especialidade.txt";
+//    private final static String URL_TEMP = "C:\\Users\\danie\\OneDrive\\Documentos\\netBeansProjects\\arquivos\\Especialidade-temp.txt";
+//    private final static String URL = "C:\\Users\\danie\\OneDrive\\Documentos\\netBeansProjects\\arquivos\\Especialidade.txt";
     private final static Path PATH = Paths.get(URL);
     private final static Path PATH_TEMP = Paths.get(URL_TEMP);
 

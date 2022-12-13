@@ -74,7 +74,4 @@ public class Especialidade{
         return this.codigo + ";" + this.nome + ";" + this.descricao;
     }
 
-    public String toString(String string) {
-        return nome;
-    }
 }
