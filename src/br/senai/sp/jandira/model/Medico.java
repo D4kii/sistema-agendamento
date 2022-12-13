@@ -2,7 +2,6 @@ package br.senai.sp.jandira.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import javax.swing.JList;
 
 public class Medico {
 
@@ -21,7 +20,12 @@ public class Medico {
         gerarCodigo();
     }
 
-    public Medico(String nome, String telefone, String email, ArrayList especialidades, String crm, LocalDate validadedataNascimento) {
+    public Medico(String nome,
+            String telefone,
+            String email,
+            ArrayList especialidades,
+            String crm,
+            LocalDate validadedataNascimento) {
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
@@ -31,7 +35,15 @@ public class Medico {
         gerarCodigo();
     }
 
-    public Medico(String nome, String telefone, String email, String crm, LocalDate validadedataNascimento, Integer codigo, ArrayList<Especialidade> especialidades) {
+    public Medico(
+            String nome,
+            String telefone,
+            String email,
+            String crm,
+            LocalDate validadedataNascimento,
+            Integer codigo,
+            ArrayList<Especialidade> especialidades) {
+        
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
@@ -39,11 +51,11 @@ public class Medico {
         this.crm = crm;
         nascimentoMedico = validadedataNascimento;
         this.codigo = codigo;
+        
     }
 
     public Medico() {
-        this.contador++;
-        this.codigo = codigo;
+        gerarCodigo();
     }
 
     public static int getContador() {
@@ -81,12 +93,12 @@ public class Medico {
         return nascimentoMedico;
     }
 
-    public ArrayList getEspecialidades() {
+    public ArrayList<Especialidade> getEspecialidades() {
         return especialidades;
 
     }
 
-    public void setEspecialidades(ArrayList especialidades) {
+    public void setEspecialidades(ArrayList<Especialidade> especialidades) {
         this.especialidades = especialidades;
 
     }
@@ -121,8 +133,22 @@ public class Medico {
 
     }
 
+    public String arrayparaString(ArrayList<Especialidade> array) {
+        ArrayList<String> codigos = new ArrayList<>();
+        for (Especialidade e : array) {
+            codigos.add(e.getCodigo().toString());
+        }
+        return String.join(";", codigos);
+    }
+
     public String getMedicoSeparadoPorPontoEVirgula() {
-        return this.codigo + ";" + this.crm + ";" + this.nome + ";" + this.telefone + ";" + this.email + ";" + this.nascimentoMedico + ";" + this.especialidades;
+        return this.codigo + ";"
+                + this.crm + ";"
+                + this.nome + ";"
+                + this.telefone + ";"
+                + this.email + ";"
+                + this.nascimentoMedico + ";"
+                + arrayparaString(this.especialidades) + ".";
     }
 
 }

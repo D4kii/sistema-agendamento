@@ -2,7 +2,7 @@ package br.senai.sp.jandira.model;
 
 import javax.swing.JOptionPane;
 
-public final class Especialidade{
+public class Especialidade{
 
     private static int contador = 99;
     private Integer codigo;

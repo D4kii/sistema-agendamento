@@ -1,6 +1,7 @@
 package br.senai.sp.jandira.dao;
 
 import br.senai.sp.jandira.model.Especialidade;
+import br.senai.sp.jandira.ui.MedicoDialog;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -17,9 +18,14 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 public class EspecialidadeDao {
-
-    private final static String URL = "C:\\Users\\22282183\\Java\\Especialidade.txt";
-    private final static String URL_TEMP = "C:\\Users\\22282183\\Java\\Especialidade-temp.txt";
+    
+    //SENAI
+    //private final static String URL_TEMP = "C:\\Users\\22282183\\Java\\Especialidade-temp.txt";
+    //private final static String URL = "C:\\Users\\22282183\\Java\\Especialidade.txt";
+    
+    //CASA
+    private final static String URL_TEMP = "C:\\Users\\danie\\OneDrive\\Documentos\\netBeansProjects\\arquivos\\Especialidade-temp.txt";
+    private final static String URL = "C:\\Users\\danie\\OneDrive\\Documentos\\netBeansProjects\\arquivos\\Especialidade.txt";
     private final static Path PATH = Paths.get(URL);
     private final static Path PATH_TEMP = Paths.get(URL_TEMP);
 
@@ -29,7 +35,9 @@ public class EspecialidadeDao {
     excluir uma especialidade, etc.
      */
     private static ArrayList<Especialidade> especialidades = new ArrayList<>();
+    private static ArrayList<Especialidade> NomesEspecialidades = new ArrayList<>();
     public static TableModel getEspecialidadesModel;
+    
 
     public static void gravar(Especialidade e) { // CREATE
         especialidades.add(e);
@@ -68,9 +76,7 @@ public class EspecialidadeDao {
 
     public static void atualizar(Especialidade especialidadeAtualizada) { // UPDATE
         for (Especialidade e : especialidades) {
-            if (Objects.equals(
-                    e.getCodigo(),
-                    especialidadeAtualizada.getCodigo())) {
+            if (Objects.equals(especialidadeAtualizada.getCodigo(),e.getCodigo())) {
                 especialidades.set(
                         especialidades.indexOf(e),
                         especialidadeAtualizada);
@@ -122,7 +128,7 @@ public class EspecialidadeDao {
             arquivoTemp.renameTo(arquivoAtual);
 
         } catch (IOException e) {
-            e.printStackTrace();
+            e.getStackTrace();
         }
 
     }
@@ -181,15 +187,25 @@ public class EspecialidadeDao {
 
         return model;
     }
+    DefaultListModel jListOneModel, jListTwoModel;
     
+        
     public static DefaultListModel<Especialidade> preencherEspecialidade() {
         DefaultListModel<Especialidade> listaEspecialidade = new DefaultListModel<>();
         
+        
         for (Especialidade listar : getEspecialidades()) {
             listaEspecialidade.addElement(listar);
-            listaEspecialidade.toArray();
         }
+        
+        
+    
+        
         return listaEspecialidade;
     }
+    
+    
+        
+        
 
 }

@@ -18,9 +18,14 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class PlanoDeSaudeDao {
-
-    private final static String URL = "C:\\Users\\22282183\\Java\\PlanoDeSaude.txt";
-    private final static String URL_TEMP = "C:\\Users\\22282183\\Java\\PlanoDeSaude-temp.txt";
+    
+    //SENAI
+//    private final static String URL = "C:\\Users\\22282183\\Java\\PlanoDeSaude.txt";
+//    private final static String URL_TEMP = "C:\\Users\\22282183\\Java\\PlanoDeSaude-temp.txt";
+    //CASA
+    private final static String URL = "C:\\Users\\danie\\OneDrive\\Documentos\\netBeansProjects\\arquivos\\PlanoDeSaude.txt";
+    private final static String URL_TEMP = "C:\\Users\\danie\\OneDrive\\Documentos\\netBeansProjects\\arquivos\\PlanoDeSaude-temp.txt";
+    
     private final static Path PATH = Paths.get(URL);
     private final static Path PATH_TEMP = Paths.get(URL_TEMP);
 

@@ -16,14 +16,20 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
+import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class MedicoDao {
 
-    private final static String URL = "C:\\Users\\22282183\\Java\\Medico.txt";
-    private final static String URL_TEMP = "C:\\Users\\22282183\\Java\\Medico-temp.txt";
+    //SENAI
+//    private final static String URL = "C:\\Users\\22282183\\Java\\Medico.txt";
+//    private final static String URL_TEMP = "C:\\Users\\22282183\\Java\\Medico-temp.txt";
+    //CASA
+    private final static String URL = "C:\\Users\\danie\\OneDrive\\Documentos\\netBeansProjects\\arquivos\\Medico.txt";
+    private final static String URL_TEMP = "C:\\Users\\danie\\OneDrive\\Documentos\\netBeansProjects\\arquivos\\Medico-temp.txt";
+
     private final static Path PATH = Paths.get(URL);
     private final static Path PATH_TEMP = Paths.get(URL_TEMP);
 
@@ -38,7 +44,7 @@ public class MedicoDao {
                     PATH,
                     StandardOpenOption.APPEND,
                     StandardOpenOption.WRITE);
-            escritor.write(e.getCodigo() + ";" + e.getCrm() + ";" + e.getNome() + ";" + e.getTelefone() + ";" + e.getEmail() + ";" + e.getNascimentoMedico() + ";" + e.getEspecialidades());
+            escritor.write(e.getMedicoSeparadoPorPontoEVirgula());
             escritor.newLine();
             escritor.close();
         } catch (IOException erro) {
@@ -47,14 +53,14 @@ public class MedicoDao {
 
     }
 
-    public static ArrayList<Medico> getPlanoDeSaudes() { //READ
+    public static ArrayList<Medico> getMedicos() { //READ
         return medico;
     }
 
     public static Medico getMedico(Integer codigo) { // READ
 
         for (Medico e : medico) {
-            if (e.getCodigo().equals(codigo)) {
+            if (codigo.equals(e.getCodigo())) {
                 return e;
             }
         }
@@ -80,7 +86,7 @@ public class MedicoDao {
     public static void excluir(Integer codigo) { // DELETE
 
         for (Medico e : medico) {
-            if (e.getCodigo().equals(codigo)) {
+            if (codigo.equals(e.getCodigo())) {
                 medico.remove(e);
                 break;
             }
@@ -116,14 +122,14 @@ public class MedicoDao {
             arquivoTemp.renameTo(arquivoAtual);
 
         } catch (IOException e) {
-            e.printStackTrace();
+            e.getStackTrace();
         }
 
     }
 
     public static ArrayList<Especialidade> separarEspecialidades(String linha) {
         String[] vetor = linha.split("_");
-        int codigoEsp = 5;
+        int codigoEsp = 6;
 
         ArrayList<Especialidade> especialidades = new ArrayList<>();
 
@@ -147,11 +153,7 @@ public class MedicoDao {
                 // Transformar os dados da linha em uma especialidade
                 String[] vetor = linha.split(";");
                 String[] data = vetor[6].split("/");
-                Medico med;
-
-                
-
-                med = new Medico(
+                Medico med = new Medico(
                         vetor[2],
                         vetor[3],
                         vetor[4],
@@ -182,6 +184,29 @@ public class MedicoDao {
 
     }
 
+    public static DefaultListModel<Especialidade> getEspecialidadeModel() {
+
+        DefaultListModel<Especialidade> especialidadesLista = new DefaultListModel<>();
+
+        try {
+
+            BufferedReader leitor = Files.newBufferedReader(PATH);
+
+            String linha = leitor.readLine();
+
+            for (Especialidade Esp : separarEspecialidades(linha)) {
+                especialidadesLista.addElement(Esp);
+            }
+
+            leitor.close();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,
+                    "Ocorreu um erro ao montar a lista do médico!");
+        }
+        return especialidadesLista;
+    }
+
     public static DefaultTableModel getMedicoModel() {
 
         String[] titulos = {"CÓDIGO", "CRM", "NOME", "TELEFONE"};
@@ -194,7 +219,7 @@ public class MedicoDao {
             dados[i][1] = e.getCrm();
             dados[i][2] = e.getNome();
             dados[i][3] = e.getTelefone();
-            
+
             i++;
         }
 

@@ -103,9 +103,12 @@ public class MedicoPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_editarMedicoButtonActionPerformed
     private void editarMedico() {
-        Medico medico = new MedicoDao().getMedico(getCodigo());
+        Medico medico = MedicoDao.getMedico(getCodigo());
 
-        MedicoDialog medicoDialog = new MedicoDialog(null, true, medico, OperacaoEnum.EDITAR);
+        MedicoDialog medicoDialog = new MedicoDialog(null,
+                true,
+                medico,
+                OperacaoEnum.EDITAR);
         medicoDialog.setVisible(true);
 
         preencherTabela();
@@ -114,7 +117,7 @@ public class MedicoPanel extends javax.swing.JPanel {
 
     private void excluirMedicoButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirMedicoButton1ActionPerformed
         if (getLinha() != -1) {
-            excluirMedico(linha);
+            excluirMedico();
         } else {
             JOptionPane.showMessageDialog(
                     this,
@@ -123,11 +126,11 @@ public class MedicoPanel extends javax.swing.JPanel {
                     JOptionPane.OK_OPTION);
         }
     }//GEN-LAST:event_excluirMedicoButton1ActionPerformed
-    private void excluirMedico(int linha) {
+    private void excluirMedico() {
 
         int resposta = JOptionPane.showConfirmDialog(
                 this,
-                "Confirma exclusão",
+                "Confirma exclusão?",
                 "Atenção",
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE);
@@ -142,14 +145,17 @@ public class MedicoPanel extends javax.swing.JPanel {
 
     private void adicionarMedicoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarMedicoButtonActionPerformed
         MedicoDialog medicoDialog
-                = new MedicoDialog(null, true, OperacaoEnum.ADICIONAR);
+                = new MedicoDialog(null,
+                        true,
+                        OperacaoEnum.ADICIONAR);
         medicoDialog.setVisible(true);
 
         preencherTabela();
         
     }//GEN-LAST:event_adicionarMedicoButtonActionPerformed
     private Integer getCodigo() {
-        String codigoStr = tabelaMedicosJTablel.getValueAt(linha, 0).toString();
+        String codigoStr = tabelaMedicosJTablel.getValueAt(getLinha(),
+                0).toString();
         Integer codigo = Integer.valueOf(codigoStr);
         return codigo;
     }
@@ -175,8 +181,8 @@ private void preencherTabela() {
         tabelaMedicosJTablel.setDefaultEditor(Object.class, null);
 
         tabelaMedicosJTablel.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        tabelaMedicosJTablel.getColumnModel().getColumn(0).setPreferredWidth(70);
-        tabelaMedicosJTablel.getColumnModel().getColumn(1).setPreferredWidth(120);
+        tabelaMedicosJTablel.getColumnModel().getColumn(0).setPreferredWidth(100);
+        tabelaMedicosJTablel.getColumnModel().getColumn(1).setPreferredWidth(150);
         tabelaMedicosJTablel.getColumnModel().getColumn(2).setPreferredWidth(200);
         tabelaMedicosJTablel.getColumnModel().getColumn(3).setPreferredWidth(150);
         
